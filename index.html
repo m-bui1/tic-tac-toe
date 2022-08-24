@@ -5,14 +5,135 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+
+        }
+        div{
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
-    
-
+    <section class="grid" >
+        <div class="box1" id="1"></div>
+        <div class="box2" id="2"></div>
+        <div class="box3" id="3"></div>
+        <div class="box4" id="4"></div>
+        <div class="box5" id="5"></div>
+        <div class="box6" id="6"></div>
+        <div class="box7" id="7"></div>
+        <div class="box8" id="8"></div>
+        <div class="box9" id="9"></div>
+    </section>
+    <button class="reset">Click To Reset</button>
 
 
     <script>
 // Use grid of arrays in order create the board
+    boxes = document.querySelectorAll('div')
+    var counter = 0
+    let spots = []
+
+    
+    resetBoard = function(){
+        for(let k = 0; k < boxes.length; k++){
+                counter = 0
+                console.log(boxes[k].style.backgroundColor = 'transparent')
+            }
+    }
+
+    for(let j = 0; j <= 9; j++){
+        spots[j] = document.querySelector('.box' + j)
+        
+
+    }
+    console.log(spots)
+    for(let i = 0; i < boxes.length; i++){
+        boxes[i].addEventListener('click', function(event){
+            counter = parseInt(counter) + 1
+            console.log(counter)
+            if(counter % 2 == 1){
+                boxes[i].style.backgroundColor = 'red'
+            } else {
+                boxes[i].style.backgroundColor = 'green'
+            }
+
+            if(boxes[0].style.backgroundColor === ('red') && boxes[1].style.backgroundColor === ('red') && boxes[2].style.backgroundColor == ('red')){
+                alert("red won!, click to play again")
+                resetBoard()
+            }
+            if(boxes[3].style.backgroundColor === ('red') && boxes[4].style.backgroundColor === ('red') && boxes[5].style.backgroundColor == ('red')){
+                alert("red won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[6].style.backgroundColor === ('red') && boxes[7].style.backgroundColor === ('red') && boxes[8].style.backgroundColor == ('red')){
+                alert("red won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[0].style.backgroundColor === ('red') && boxes[3].style.backgroundColor === ('red') && boxes[6].style.backgroundColor == ('red')){
+                alert("red won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[1].style.backgroundColor === ('red') && boxes[4].style.backgroundColor === ('red') && boxes[7].style.backgroundColor == ('red')){
+                alert("red won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[2].style.backgroundColor === ('red') && boxes[5].style.backgroundColor === ('red') && boxes[8].style.backgroundColor == ('red')){
+                alert("red won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[0].style.backgroundColor === ('red') && boxes[4].style.backgroundColor === ('red') && boxes[8].style.backgroundColor == ('red')){
+                alert("red won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[2].style.backgroundColor === ('red') && boxes[4].style.backgroundColor === ('red') && boxes[6].style.backgroundColor == ('red')){
+                alert("red won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[0].style.backgroundColor === ('green') && boxes[1].style.backgroundColor === ('green') && boxes[2].style.backgroundColor == ('green')){
+                alert("green won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[3].style.backgroundColor === ('green') && boxes[4].style.backgroundColor === ('green') && boxes[5].style.backgroundColor == ('green')){
+                alert("green won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[6].style.backgroundColor === ('green') && boxes[7].style.backgroundColor === ('green') && boxes[8].style.backgroundColor == ('green')){
+                alert("green won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[0].style.backgroundColor === ('green') && boxes[3].style.backgroundColor === ('green') && boxes[6].style.backgroundColor == ('green')){
+                alert("green won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[1].style.backgroundColor === ('green') && boxes[4].style.backgroundColor === ('green') && boxes[7].style.backgroundColor == ('green')){
+                alert("green won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[2].style.backgroundColor === ('green') && boxes[5].style.backgroundColor === ('green') && boxes[8].style.backgroundColor == ('green')){
+                alert("green won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[0].style.backgroundColor === ('green') && boxes[4].style.backgroundColor === ('green') && boxes[8].style.backgroundColor == ('green')){
+                alert("green won!, click to play again")
+                resetBoard()
+            }
+            else if(boxes[2].style.backgroundColor === ('green') && boxes[4].style.backgroundColor === ('green') && boxes[6].style.backgroundColor == ('green')){
+                alert("green won!, click to play again")
+                resetBoard()
+            }
+
+        })
+        
+        
+    }
+
+
 // can be similar to the make them red task but will need to use 2d array
 // once clicked color changes.
 // takes turns changing color by using % 2 to see if there is a remainder vs not a remainder change color
