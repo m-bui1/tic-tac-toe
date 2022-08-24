@@ -15,7 +15,6 @@
             border: 1px solid black;
             height: 100px;
             width: 100px;
-            background-Color: transparent;
         }
     </style>
 </head>
@@ -60,7 +59,7 @@
         boxes[i].addEventListener('click', function(event){
             counter = parseInt(counter) + 1
             console.log(counter)
-            if(counter % 2 == 1 && boxes[i].style.backgroundColor){
+            if(counter % 2 == 1){
                 boxes[i].style.backgroundColor = 'red'
             } else {
                 boxes[i].style.backgroundColor = 'green'
