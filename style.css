@@ -1,0 +1,51 @@
+html{
+    background-color: blanchedalmond;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    
+}
+.box{
+    background-color: white;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    font-size: 600%;
+    text-align: center;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 165ms all;
+}
+h2{
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    margin: 30px;
+    
+}
+section{
+    justify-content: center;
+}
+div{
+    text-align: center;
+}
+#a1,#a2,#a3,#a4,#a5,#a6,#a7,#a8,#a9{
+    color:black
+}
+.oScore{
+    position: absolute;
+    left: 0%;   
+}
+.xScore{
+    position: absolute;
+    right: 0%;
+}
+button{
+    background-color: aliceblue;
+    border-radius: 6px;
+    border: 1px solid black;
+}
