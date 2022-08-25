@@ -7,8 +7,8 @@ The briefest description of my cool project and why you should all use it.
 - How to use my awesome project.
 - Download instructions (if relevant):
 ```zsh
-$ git clone [Tic Tac Toe](https://github.com/m-bui1/tic-tac-toe.git)
-$ cd tic-tac-toe.git
+$ git clone https://github.com/m-bui1/tic-tac-toe.git 'Tic-Tac-Toe'
+$ cd Tic-Tac-Toe
 $ code index.html
 ```
 - Add in-app screenshots.
