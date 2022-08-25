@@ -31,128 +31,178 @@
         <div class="box9" id="9"></div>
     </section>
     <button class="reset">Click To Reset</button>
-    <h2 class="redScore">Red Score: 0</h2>
-    <h2 class="greenScore">Green Score: 0</h2>
+    <button class="start">Click to Start</button>
+    <h2 class="xScore">Player 1 Score: 0</h2>
+    <h2 class="oScore">Player 2 Score: 0</h2>
+    <h2 class="drawScore">Draws: 0</h2>
 
 
     <script>
 // Use grid of arrays in order create the board
     boxes = document.querySelectorAll('div')
     resetButton = document.querySelector('button.reset')
-    redTot = document.querySelector('h2.redScore')
-    redScore = 0
-    greenTot = document.querySelector('h2.greenScore')
-    greenScore = 0
+    startButton = document.querySelector('button.start')
+    drawTot = document.querySelector('h2.drawScore')
+    drawScore = 0
+    xTot = document.querySelector('h2.xScore')
+    xScore = 0
+    oTot = document.querySelector('h2.oScore')
+    oScore = 0
     var counter = 0
-    let spots = []
+    var X = 'X'
+    var O = 'O'
+
 
     resetButton.addEventListener('click', function(event){
         for(let k = 0; k < boxes.length; k++){
                 counter = 0
-                console.log(boxes[k].style.backgroundColor = 'transparent')
+                console.log(boxes[k].textContent = '')
             }
 
     })
 
-    console.log(spots)
     for(let i = 0; i < boxes.length; i++){
-        boxes[i].addEventListener('click', function(event){
-            counter = parseInt(counter) + 1
+        boxes[i].addEventListener('click', function (draw){
             console.log(counter)
-            if(counter % 2 == 1){
-                boxes[i].style.backgroundColor = 'red'
+            if(counter % 2 == 1 && boxes[i].textContent == ''){
+                counter = parseInt(counter) + 1
+                var xSelect = event.target
+                xSelect.textContent = X
+                //boxes[i].style.backgroundColor = 'Player 1'
+
+            } else if(counter % 2 == 0 && boxes[i].textContent == ''){
+                counter = parseInt(counter) + 1
+                //boxes[i].style.backgroundColor = 'Player 2'
+                var oSelect = event.target
+                oSelect.textContent = O
             } else {
-                boxes[i].style.backgroundColor = 'green'
+                counter = parseInt(counter) - 1
             }
 
-            if(boxes[0].style.backgroundColor === ('red') && boxes[1].style.backgroundColor === ('red') && boxes[2].style.backgroundColor == ('red')){
-                redScore = redScore + 1
-                redTot.innerHTML = "Red Score: " + redScore
+            if(boxes[0].textContent === 'X' && boxes[1].textContent === 'X' && boxes[2].textContent === 'X'){
+                boxes[i].removeEventListener('click', draw)
+                xScore = xScore + 1
+                xTot.innerHTML = "Player 1 Score: " + xScore
+                
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[3].style.backgroundColor === ('red') && boxes[4].style.backgroundColor === ('red') && boxes[5].style.backgroundColor == ('red')){
-                redScore = redScore + 1
-                redTot.innerHTML = "Red Score: " + redScore
+            else if(boxes[3].textContent === 'X' && boxes[4].textContent === 'X' && boxes[5].textContent === 'X'){
+                xScore = xScore + 1
+                xTot.innerHTML = "Player 1 Score: " + xScore
+                O = ''
+                X = ''
                     
             }
-            else if(boxes[6].style.backgroundColor === ('red') && boxes[7].style.backgroundColor === ('red') && boxes[8].style.backgroundColor == ('red')){
-                redScore = redScore + 1
-                redTot.innerHTML = "Red Score: " + redScore
+            else if(boxes[6].textContent === 'X' && boxes[7].textContent === 'X' && boxes[8].textContent === 'X'){
+                xScore = xScore + 1
+                xTot.innerHTML = "Player 1 Score: " + xScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[0].style.backgroundColor === ('red') && boxes[3].style.backgroundColor === ('red') && boxes[6].style.backgroundColor == ('red')){
-                redScore = redScore + 1
-                redTot.innerHTML = "Red Score: " + redScore
+            else if(boxes[0].textContent === 'X' && boxes[3].textContent === 'X' && boxes[6].textContent === 'X'){
+                xScore = xScore + 1
+                xTot.innerHTML = "Player 1 Score: " + xScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[1].style.backgroundColor === ('red') && boxes[4].style.backgroundColor === ('red') && boxes[7].style.backgroundColor == ('red')){
-                redScore = redScore + 1
-                redTot.innerHTML = "Red Score: " + redScore
+            else if(boxes[1].textContent === 'X' && boxes[4].textContent === 'X' && boxes[7].textContent === 'X'){
+                xScore = xScore + 1
+                xTot.innerHTML = "Player 1 Score: " + xScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[2].style.backgroundColor === ('red') && boxes[5].style.backgroundColor === ('red') && boxes[8].style.backgroundColor == ('red')){
-                redScore = redScore + 1
-                redTot.innerHTML = "Red Score: " + redScore
+            else if(boxes[2].textContent === 'X' && boxes[5].textContent === 'X' && boxes[8].textContent === 'X'){
+                xScore = xScore + 1
+                xTot.innerHTML = "Player 1 Score: " + xScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[0].style.backgroundColor === ('red') && boxes[4].style.backgroundColor === ('red') && boxes[8].style.backgroundColor == ('red')){
-                redScore = redScore + 1
-                redTot.innerHTML = "Red Score: " + redScore
+            else if(boxes[0].textContent === 'X' && boxes[4].textContent === 'X' && boxes[8].textContent === 'X'){
+                xScore = xScore + 1
+                xTot.innerHTML = "Player 1 Score: " + xScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[2].style.backgroundColor === ('red') && boxes[4].style.backgroundColor === ('red') && boxes[6].style.backgroundColor == ('red')){
-                redScore = redScore + 1
-                redTot.innerHTML = "Red Score: " + redScore
+            else if(boxes[2].textContent === 'X' && boxes[4].textContent === 'X' && boxes[6].textContent === 'X'){
+                xScore = xScore + 1
+                xTot.innerHTML = "Player 1 Score: " + xScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[0].style.backgroundColor === ('green') && boxes[1].style.backgroundColor === ('green') && boxes[2].style.backgroundColor == ('green')){
-                greenScore = greenScore + 1
-                greenTot.innerHTML = "Green Score: " + greenScore
+            else if(boxes[0].textContent === 'O' && boxes[1].textContent === 'O' && boxes[2].textContent === 'O'){
+                oScore = oScore + 1
+                oTot.innerHTML = "Player 2 Score: " + oScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[3].style.backgroundColor === ('green') && boxes[4].style.backgroundColor === ('green') && boxes[5].style.backgroundColor == ('green')){
-                greenScore = greenScore + 1
-                greenTot.innerHTML = "Green Score: " + greenScore
+            else if(boxes[3].textContent === 'O' && boxes[4].textContent === 'O' && boxes[5].textContent === 'O'){
+                oScore = oScore + 1
+                oTot.innerHTML = "Player 2 Score: " + oScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[6].style.backgroundColor === ('green') && boxes[7].style.backgroundColor === ('green') && boxes[8].style.backgroundColor == ('green')){
-                greenScore = greenScore + 1
-                greenTot.innerHTML = "Green Score: " + greenScore
+            else if(boxes[6].textContent === 'O' && boxes[7].textContent === 'O' && boxes[8].textContent === 'O'){
+                oScore = oScore + 1
+                oTot.innerHTML = "Player 2 Score: " + oScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[0].style.backgroundColor === ('green') && boxes[3].style.backgroundColor === ('green') && boxes[6].style.backgroundColor == ('green')){
-                greenScore = greenScore + 1
-                greenTot.innerHTML = "Green Score: " + greenScore
+            else if(boxes[0].textContent === 'O' && boxes[3].textContent === 'O' && boxes[6].textContent === 'O'){
+                oScore = oScore + 1
+                oTot.innerHTML = "Player 2 Score: " + oScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[1].style.backgroundColor === ('green') && boxes[4].style.backgroundColor === ('green') && boxes[7].style.backgroundColor == ('green')){
-                greenScore = greenScore + 1
-                greenTot.innerHTML = "Green Score: " + greenScore
+            else if(boxes[1].textContent === 'O' && boxes[4].textContent === 'O' && boxes[7].textContent === 'O'){
+                oScore = oScore + 1
+                oTot.innerHTML = "Player 2 Score: " + oScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[2].style.backgroundColor === ('green') && boxes[5].style.backgroundColor === ('green') && boxes[8].style.backgroundColor == ('green')){
-                greenScore = greenScore + 1
-                greenTot.innerHTML = "Green Score: " + greenScore
+            else if(boxes[2].textContent === 'O' && boxes[5].textContent === 'O' && boxes[8].textContent === 'O'){
+                oScore = oScore + 1
+                oTot.innerHTML = "Player 2 Score: " + oScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[0].style.backgroundColor === ('green') && boxes[4].style.backgroundColor === ('green') && boxes[8].style.backgroundColor == ('green')){
-                greenScore = greenScore + 1
-                greenTot.innerHTML = "Green Score: " + greenScore
+            else if(boxes[0].textContent === 'O' && boxes[4].textContent === 'O' && boxes[8].textContent === 'O'){
+                oScore = oScore + 1
+                oTot.innerHTML = "Player 2 Score: " + oScore
+                O = ''
+                X = ''
                 
             }
-            else if(boxes[2].style.backgroundColor === ('green') && boxes[4].style.backgroundColor === ('green') && boxes[6].style.backgroundColor == ('green')){
-                greenScore = greenScore + 1
-                greenTot.innerHTML = "Green Score: " + greenScore
+            else if(boxes[2].textContent === 'O' && boxes[4].textContent === 'O' && boxes[6].textContent === 'O'){
+                oScore = oScore + 1
+                oTot.innerHTML = "Player 2 Score: " + oScore
+                O = ''
+                X = ''
                 
+            } else if((boxes[1].textContent === 'X' || boxes[1].textContent === 'O') && (boxes[2].textContent === 'X' || boxes[2].textContent === 'O') &&(boxes[3].textContent === 'X' || boxes[3].textContent === 'O') &&(boxes[4].textContent === 'X' || boxes[4].textContent === 'O') &&(boxes[5].textContent === 'X' || boxes[5].textContent === 'O') &&(boxes[6].textContent === 'X' || boxes[1].textContent === 'O') &&(boxes[1].textContent === 'X' || boxes[1].textContent === 'O') &&(boxes[1].textContent === 'X' || boxes[6].textContent === 'O') &&(boxes[7].textContent === 'X' || boxes[7].textContent === 'O') &&(boxes[8].textContent === 'X' || boxes[8].textContent === 'O')){
+                drawScore = drawScore + 1
+                drawTot.innerHTML = "Draws: " + drawScore
             }
-
         })
         
         
     }
 
 
-// can be similar to the make them red task but will need to use 2d array
+// can be similar to the make them Player 1 task but will need to use 2d array
 // once clicked color changes.
 // takes turns changing color by using % 2 to see if there is a remainder vs not a remainder change color
 // use boolean operators to demonstrate all possible win scenarios, and if either color has any of the win scenarios decalre winner
