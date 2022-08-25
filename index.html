@@ -30,11 +30,13 @@
         <div class="box8" id="8"></div>
         <div class="box9" id="9"></div>
     </section>
+    <h2 class="winner"></h2>
+
     <button class="reset">Click To Reset</button>
     <button class="start">Click to Start</button>
-    <h2 class="xScore">Player 1 Score: 0</h2>
-    <h2 class="oScore">Player 2 Score: 0</h2>
-    <h2 class="drawScore">Draws: 0</h2>
+    <h2 class="xScore">Player 1 Score: <span class="xSpan">0</span></h2>
+    <h2 class="oScore">Player 2 Score: <span class="oSpan">0</span></h2>
+    <h2 class="drawScore">Draws: <span class="drawSpan">0</span></h2>
 
 
     <script>
@@ -51,18 +53,43 @@
     var counter = 0
     var X = 'X'
     var O = 'O'
+    winnerTitle = document.querySelector('h2.winner')
+    spanXTag = document.querySelector('span.xSpan')
+    spanOTag = document.querySelector('span.oSpan')
+    spanDrawTag = document.querySelector('span.drawSpan')
 
 
     resetButton.addEventListener('click', function(event){
         for(let k = 0; k < boxes.length; k++){
                 counter = 0
                 console.log(boxes[k].textContent = '')
+                var X = 'X'
+                var O = 'O'
+                winnerTitle.textContent = ''
             }
 
     })
+    
+
+
+    startButton.addEventListener('click', function(event){
+        for(let k = 0; k < boxes.length; k++){
+                counter = 0
+                oScore = 0
+                xScore = 0
+                drawScore = 0
+                console.log(boxes[k].textContent = '')
+                var X = 'X'
+                var O = 'O'
+                spanOTag.textContent = 0
+                spanXTag.textContent = 0
+                spanDrawTag.textContent = 0
+                winnerTitle.textContent = ''
+        }
+    })
 
     for(let i = 0; i < boxes.length; i++){
-        boxes[i].addEventListener('click', function (draw){
+        boxes[i].addEventListener('click', function (){
             console.log(counter)
             if(counter % 2 == 1 && boxes[i].textContent == ''){
                 counter = parseInt(counter) + 1
@@ -78,128 +105,118 @@
             } else {
                 counter = parseInt(counter) - 1
             }
-
-            if(boxes[0].textContent === 'X' && boxes[1].textContent === 'X' && boxes[2].textContent === 'X'){
-                boxes[i].removeEventListener('click', draw)
-                xScore = xScore + 1
-                xTot.innerHTML = "Player 1 Score: " + xScore
-                
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[3].textContent === 'X' && boxes[4].textContent === 'X' && boxes[5].textContent === 'X'){
-                xScore = xScore + 1
-                xTot.innerHTML = "Player 1 Score: " + xScore
-                O = ''
-                X = ''
-                    
-            }
-            else if(boxes[6].textContent === 'X' && boxes[7].textContent === 'X' && boxes[8].textContent === 'X'){
-                xScore = xScore + 1
-                xTot.innerHTML = "Player 1 Score: " + xScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[0].textContent === 'X' && boxes[3].textContent === 'X' && boxes[6].textContent === 'X'){
-                xScore = xScore + 1
-                xTot.innerHTML = "Player 1 Score: " + xScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[1].textContent === 'X' && boxes[4].textContent === 'X' && boxes[7].textContent === 'X'){
-                xScore = xScore + 1
-                xTot.innerHTML = "Player 1 Score: " + xScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[2].textContent === 'X' && boxes[5].textContent === 'X' && boxes[8].textContent === 'X'){
-                xScore = xScore + 1
-                xTot.innerHTML = "Player 1 Score: " + xScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[0].textContent === 'X' && boxes[4].textContent === 'X' && boxes[8].textContent === 'X'){
-                xScore = xScore + 1
-                xTot.innerHTML = "Player 1 Score: " + xScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[2].textContent === 'X' && boxes[4].textContent === 'X' && boxes[6].textContent === 'X'){
-                xScore = xScore + 1
-                xTot.innerHTML = "Player 1 Score: " + xScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[0].textContent === 'O' && boxes[1].textContent === 'O' && boxes[2].textContent === 'O'){
-                oScore = oScore + 1
-                oTot.innerHTML = "Player 2 Score: " + oScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[3].textContent === 'O' && boxes[4].textContent === 'O' && boxes[5].textContent === 'O'){
-                oScore = oScore + 1
-                oTot.innerHTML = "Player 2 Score: " + oScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[6].textContent === 'O' && boxes[7].textContent === 'O' && boxes[8].textContent === 'O'){
-                oScore = oScore + 1
-                oTot.innerHTML = "Player 2 Score: " + oScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[0].textContent === 'O' && boxes[3].textContent === 'O' && boxes[6].textContent === 'O'){
-                oScore = oScore + 1
-                oTot.innerHTML = "Player 2 Score: " + oScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[1].textContent === 'O' && boxes[4].textContent === 'O' && boxes[7].textContent === 'O'){
-                oScore = oScore + 1
-                oTot.innerHTML = "Player 2 Score: " + oScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[2].textContent === 'O' && boxes[5].textContent === 'O' && boxes[8].textContent === 'O'){
-                oScore = oScore + 1
-                oTot.innerHTML = "Player 2 Score: " + oScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[0].textContent === 'O' && boxes[4].textContent === 'O' && boxes[8].textContent === 'O'){
-                oScore = oScore + 1
-                oTot.innerHTML = "Player 2 Score: " + oScore
-                O = ''
-                X = ''
-                
-            }
-            else if(boxes[2].textContent === 'O' && boxes[4].textContent === 'O' && boxes[6].textContent === 'O'){
-                oScore = oScore + 1
-                oTot.innerHTML = "Player 2 Score: " + oScore
-                O = ''
-                X = ''
-                
-            } else if((boxes[1].textContent === 'X' || boxes[1].textContent === 'O') && (boxes[2].textContent === 'X' || boxes[2].textContent === 'O') &&(boxes[3].textContent === 'X' || boxes[3].textContent === 'O') &&(boxes[4].textContent === 'X' || boxes[4].textContent === 'O') &&(boxes[5].textContent === 'X' || boxes[5].textContent === 'O') &&(boxes[6].textContent === 'X' || boxes[1].textContent === 'O') &&(boxes[1].textContent === 'X' || boxes[1].textContent === 'O') &&(boxes[1].textContent === 'X' || boxes[6].textContent === 'O') &&(boxes[7].textContent === 'X' || boxes[7].textContent === 'O') &&(boxes[8].textContent === 'X' || boxes[8].textContent === 'O')){
-                drawScore = drawScore + 1
-                drawTot.innerHTML = "Draws: " + drawScore
-            }
         })
         
         
     }
+        
+
+            if(boxes[0].textContent === 'X' && boxes[1].textContent === 'X' && boxes[2].textContent === 'X'){
+                //boxes[i].removeEventListener('click', draw)
+                xScore = xScore + 1
+                //spanTag.textContent = xScore
+                spanTag.textContent = xScore
+                winnerTitle.textContent = 'Player 1 wins'
+
+                
+                
+            }
+            else if(boxes[3].textContent === 'X' && boxes[4].textContent === 'X' && boxes[5].textContent === 'X'){
+                xScore = xScore + 1
+                spanTag.textContent = xScore
+                winnerTitle.textContent = 'Player 1 wins'
+                
+                    
+            }
+            else if(boxes[6].textContent === 'X' && boxes[7].textContent === 'X' && boxes[8].textContent === 'X'){
+                xScore = xScore + 1
+                spanTag.textContent = xScore
+                winnerTitle.textContent = 'Player 1 wins'
+                
+            }
+            else if(boxes[0].textContent === 'X' && boxes[3].textContent === 'X' && boxes[6].textContent === 'X'){
+                xScore = xScore + 1
+                spanTag.textContent = xScore
+                winnerTitle.textContent = 'Player 1 wins'
+                
+            }
+            else if(boxes[1].textContent === 'X' && boxes[4].textContent === 'X' && boxes[7].textContent === 'X'){
+                xScore = xScore + 1
+                spanTag.textContent = xScore
+                winnerTitle.textContent = 'Player 1 wins'
+                
+            }
+            else if(boxes[2].textContent === 'X' && boxes[5].textContent === 'X' && boxes[8].textContent === 'X'){
+                xScore = xScore + 1
+                spanTag.textContent = xScore
+                winnerTitle.textContent = 'Player 1 wins'
+                
+            }
+            else if(boxes[0].textContent === 'X' && boxes[4].textContent === 'X' && boxes[8].textContent === 'X'){
+                xScore = xScore + 1
+                spanTag.textContent = xScore
+                winnerTitle.textContent = 'Player 1 wins'
+                
+            }
+            else if(boxes[2].textContent === 'X' && boxes[4].textContent === 'X' && boxes[6].textContent === 'X'){
+                xScore = xScore + 1
+                spanTag.textContent = xScore
+                winnerTitle.textContent = 'Player 1 wins'
+                
+            }
+            else if(boxes[0].textContent === 'O' && boxes[1].textContent === 'O' && boxes[2].textContent === 'O'){
+                oScore = oScore + 1
+                spanOTag.textContent = oScore
+                winnerTitle.textContent = 'Player 2 wins'
+                
+            }
+            else if(boxes[3].textContent === 'O' && boxes[4].textContent === 'O' && boxes[5].textContent === 'O'){
+                oScore = oScore + 1
+                spanOTag.textContent = oScore
+                winnerTitle.textContent = 'Player 2 wins'
+                
+            }
+            else if(boxes[6].textContent === 'O' && boxes[7].textContent === 'O' && boxes[8].textContent === 'O'){
+                oScore = oScore + 1
+                spanOTag.textContent = oScore
+                winnerTitle.textContent = 'Player 2 wins'
+                
+            }
+            else if(boxes[0].textContent === 'O' && boxes[3].textContent === 'O' && boxes[6].textContent === 'O'){
+                oScore = oScore + 1
+                spanOTag.textContent = oScore
+                winnerTitle.textContent = 'Player 2 wins'
+                
+            }
+            else if(boxes[1].textContent === 'O' && boxes[4].textContent === 'O' && boxes[7].textContent === 'O'){
+                oScore = oScore + 1
+                spanOTag.textContent = oScore
+                winnerTitle.textContent = 'Player 2 wins'
+                
+            }
+            else if(boxes[2].textContent === 'O' && boxes[5].textContent === 'O' && boxes[8].textContent === 'O'){
+                oScore = oScore + 1
+                spanOTag.textContent = oScore
+                winnerTitle.textContent = 'Player 2 wins'
+                
+            }
+            else if(boxes[0].textContent === 'O' && boxes[4].textContent === 'O' && boxes[8].textContent === 'O'){
+                oScore = oScore + 1
+                spanOTag.textContent = oScore
+                winnerTitle.textContent = 'Player 2 wins'
+                
+            }
+            else if(boxes[2].textContent === 'O' && boxes[4].textContent === 'O' && boxes[6].textContent === 'O'){
+                oScore = oScore + 1
+                spanOTag.textContent = oScore
+                winnerTitle.textContent = 'Player 2 wins'
+                
+                
+            } else if((boxes[1].textContent === 'X' || boxes[1].textContent === 'O') && (boxes[2].textContent === 'X' || boxes[2].textContent === 'O') &&(boxes[3].textContent === 'X' || boxes[3].textContent === 'O') &&(boxes[4].textContent === 'X' || boxes[4].textContent === 'O') &&(boxes[5].textContent === 'X' || boxes[5].textContent === 'O') &&(boxes[6].textContent === 'X' || boxes[1].textContent === 'O') &&(boxes[1].textContent === 'X' || boxes[1].textContent === 'O') &&(boxes[1].textContent === 'X' || boxes[6].textContent === 'O') &&(boxes[7].textContent === 'X' || boxes[7].textContent === 'O') &&(boxes[8].textContent === 'X' || boxes[8].textContent === 'O')){
+                spanDrawTag.textContent = drawScore
+                drawTot.innerHTML = "Draws: " + drawScore
+            }
+
 
 
 // can be similar to the make them Player 1 task but will need to use 2d array
