@@ -10,30 +10,54 @@
             display: grid;
             grid-template-columns: repeat(3, 100px);
 
+
         }
-        div{
+        .box{
+            font-family: Arial, sans-serif;
+            font-weight: bold;
             border: 1px solid black;
             height: 100px;
             width: 100px;
+            font-size: 600%;
+            text-align: center;
+            background-size: 90%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h2{
+            text-align: center;
+            font-size: 30px;
+        }
+        section{
+            justify-content: center;
+        }
+        div{
+            text-align: center;
+        }
+        #a1,#a2,#a3,#a4,#a5,#a6,#a7,#a8,#a9{
+            color:black
         }
     </style>
+
 </head>
 <body>
+    
     <section class="grid" >
-        <div class="box1" id="1"></div>
-        <div class="box2" id="2"></div>
-        <div class="box3" id="3"></div>
-        <div class="box4" id="4"></div>
-        <div class="box5" id="5"></div>
-        <div class="box6" id="6"></div>
-        <div class="box7" id="7"></div>
-        <div class="box8" id="8"></div>
-        <div class="box9" id="9"></div>
+        <div class="box" id="a1"></div>
+        <div class="box" id="a2"></div>
+        <div class="box" id="a3"></div>
+        <div class="box" id="a4"></div>
+        <div class="box" id="a5"></div>
+        <div class="box" id="a6"></div>
+        <div class="box" id="a7"></div>
+        <div class="box" id="a8"></div>
+        <div class="box" id="a9"></div>
     </section>
     <h2 class="winner"></h2>
-
-    <button class="reset">Click To Reset</button>
-    <button class="start">Click to Start</button>
+    <div>
+        <button class="reset">Click To Reset</button>
+        <button class="start">Click to Start</button>
+    </div>
     <h2 class="xScore">Player 1 Score: <span class="xSpan">0</span></h2>
     <h2 class="oScore">Player 2 Score: <span class="oSpan">0</span></h2>
     <h2 class="drawScore">Draws: <span class="drawSpan">0</span></h2>
@@ -41,7 +65,7 @@
 
     <script>
 // Use grid of arrays in order create the board
-    boxes = document.querySelectorAll('div')
+    boxes = document.querySelectorAll('div.box')
     resetButton = document.querySelector('button.reset')
     startButton = document.querySelector('button.start')
     drawTot = document.querySelector('h2.drawScore')
@@ -50,9 +74,10 @@
     xScore = 0
     oTot = document.querySelector('h2.oScore')
     oScore = 0
-    var counter = 0
+    var counter = 1
     var X = 'X'
     var O = 'O'
+    var playerTurn = X
     var isGameOver = false
     winnerTitle = document.querySelector('h2.winner')
     spanXTag = document.querySelector('span.xSpan')
@@ -60,10 +85,12 @@
     spanDrawTag = document.querySelector('span.drawSpan')
     body = document.querySelector('body')
 
+    //document.getElementsByClassName('box').addEventListener("mouseout", mouseOut)
 
+// resets button
     resetButton.addEventListener('click', function(event){
         for(let k = 0; k < boxes.length; k++){
-                counter = 0
+                counter = 1
                 console.log(boxes[k].textContent = '')
                 winnerTitle.textContent = ''
                 isGameOver = false
@@ -73,7 +100,7 @@
 
     startButton.addEventListener('click', function(event){
         for(let k = 0; k < boxes.length; k++){
-                counter = 0
+                counter = 1
                 oScore = 0
                 xScore = 0
                 drawScore = 0
@@ -86,23 +113,25 @@
         }
     })
 
+
     for(let i = 0; i < boxes.length; i++){
         boxes[i].addEventListener('click', function (){
-            console.log(counter)
-            if(counter % 2 == 1 && boxes[i].textContent == '' && isGameOver === false){
+            if(counter % 2 == 0 && boxes[i].textContent == '' && isGameOver === false){
                 counter = parseInt(counter) + 1
+                playerTurn = X
                 var xSelect = event.target
                 xSelect.textContent = X
+                xSelect.style.opacity = 1
 
-            } else if(counter % 2 == 0 && boxes[i].textContent == '' && isGameOver === false){
+            } else if(counter % 2 == 1 && boxes[i].textContent == '' && isGameOver === false){
                 counter = parseInt(counter) + 1
+                playerTurn = O
                 var oSelect = event.target
                 oSelect.textContent = O
+                oSelect.style.opacity = 1
             }
-
         
             if(boxes[0].textContent === 'X' && boxes[1].textContent === 'X' && boxes[2].textContent === 'X' && isGameOver === false){
-                //boxes[i].removeEventListener('click', draw)
                 xScore = xScore + 1
                 spanXTag.textContent = xScore
                 winnerTitle.textContent = 'Player 1 wins'
@@ -214,7 +243,7 @@
                 isGameOver = true
                 
                 
-            } else if((boxes[1].textContent === 'X' || boxes[1].textContent === 'O') && (boxes[2].textContent === 'X' || boxes[2].textContent === 'O') &&(boxes[3].textContent === 'X' || boxes[3].textContent === 'O') &&(boxes[4].textContent === 'X' || boxes[4].textContent === 'O') &&(boxes[5].textContent === 'X' || boxes[5].textContent === 'O') &&(boxes[6].textContent === 'X' || boxes[1].textContent === 'O') &&(boxes[1].textContent === 'X' || boxes[1].textContent === 'O') &&(boxes[1].textContent === 'X' || boxes[6].textContent === 'O') &&(boxes[7].textContent === 'X' || boxes[7].textContent === 'O') &&(boxes[8].textContent === 'X' || boxes[8].textContent === 'O') && isGameOver === false){
+            } else if((counter === 9) && (isGameOver === false)){
                 drawScore = drawScore + 1
                 spanDrawTag.textContent = drawScore
                 winnerTitle.innerHTML = 'DRAW'
@@ -222,9 +251,23 @@
                 
             }
         })
-        
-        
     }
+    for(let i = 0; i < boxes.length; i++){
+      boxes[i].addEventListener('mouseover', function(){
+        if(counter % 2 == 0 && boxes[i].textContent == '' && isGameOver === false){
+            boxes[i].style.backgroundImage = "url('./x3.png')"
+            boxes[i].style.opacity = 0.3
+        }else if(counter % 2 == 1 && boxes[i].textContent == '' && isGameOver === false){
+            boxes[i].style.backgroundImage = "url('./o2.jpg')"
+            boxes[i].style.opacity = 0.3
+        }
+            boxes[i].addEventListener('mouseout', function(){
+            boxes[i].style.backgroundImage = ""
+            boxes[i].style.opacity = 1
+            }) 
+        })
+    }
+
 
 
 // can be similar to the make them Player 1 task but will need to use 2d array
