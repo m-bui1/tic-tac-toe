@@ -13,10 +13,12 @@ var X = 'X'
 var O = 'O'
 var playerTurn = X
 var isGameOver = false
+var sound = new Audio("clicksound.mp3")
 winnerTitle = document.querySelector('h2.winner')
 changingScoreX = document.querySelector('span.xSpan')
 changingScoreO = document.querySelector('span.oSpan')
 changingScoreDraw = document.querySelector('span.drawSpan')
+
 
 // button to Reset board using a for loop to iterate over every square and resetting them, Also resets necessary variables to initial value
 resetButton.addEventListener('click', function(event){
@@ -51,6 +53,9 @@ startButton.addEventListener('click', function(event){
 for(let i = 0; i < gameBoard.length; i++){
     gameBoard[i].addEventListener('click', function (){
         if(clickCounter % 2 == 0 && gameBoard[i].textContent == '' && isGameOver === false){
+            sound.volume = 0.2
+            sound.currentTime = 0
+            sound.play()
             clickCounter = parseInt(clickCounter) + 1
             playerTurn = X
             var xSelect = event.target
@@ -58,6 +63,9 @@ for(let i = 0; i < gameBoard.length; i++){
             xSelect.style.opacity = 1
 
         } else if(clickCounter % 2 == 1 && gameBoard[i].textContent == '' && isGameOver === false){
+            sound.volume = 0.2
+            sound.currentTime = 0;
+            sound.play();
             clickCounter = parseInt(clickCounter) + 1
             playerTurn = O
             var oSelect = event.target
