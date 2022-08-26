@@ -11,6 +11,7 @@ html{
     font-family: Arial, sans-serif;
     font-weight: bold;
     border: 1px solid black;
+    border-radius: 6px;
     height: 100px;
     width: 100px;
     font-size: 600%;
